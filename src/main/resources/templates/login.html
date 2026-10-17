@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"><title>SmartCampus — Login</title>
+<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="card">
+  <h1>SmartCampus</h1>
+  <p class="sub">Connexion à votre compte</p>
+  <form id="loginForm">
+    <input type="email" id="email" placeholder="Email institutionnel" required>
+    <input type="password" id="password" placeholder="Mot de passe" required>
+    <button type="submit">Se connecter</button>
+  </form>
+  <p class="msg" id="msg"></p>
+  <p class="link">Pas de compte ? <a href="/register">Créer un compte</a></p>
+</div>
+<script>
+document.getElementById('loginForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const r = await fetch('/api/auth/login', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({email:email.value, password:password.value})});
+  const d = await r.json();
+  if (r.ok) { localStorage.setItem('token', d.token); window.location='/dashboard'; }
+  else { msg.textContent = d.message || 'Échec de connexion'; }
+});
+</script>
+</body></html>

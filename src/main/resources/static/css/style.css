@@ -1,0 +1,14 @@
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,system-ui,sans-serif;background:linear-gradient(135deg,#1e3a8a,#7c3aed);min-height:100vh;display:flex;align-items:center;justify-content:center;color:#1f2937}
+.card{background:#fff;padding:2.5rem;border-radius:1.25rem;box-shadow:0 20px 60px rgba(0,0,0,.25);width:100%;max-width:400px}
+h1{font-size:1.75rem;font-weight:700;color:#1e3a8a;margin-bottom:.25rem}
+.sub{color:#6b7280;margin-bottom:1.5rem}
+input{width:100%;padding:.75rem 1rem;margin-bottom:1rem;border:1px solid #d1d5db;border-radius:.6rem;font-size:1rem}
+button{width:100%;padding:.8rem;border:none;border-radius:.6rem;background:#1e3a8a;color:#fff;font-size:1rem;font-weight:600;cursor:pointer;transition:background .2s}
+button:hover{background:#1e40af}
+.msg{color:#dc2626;margin-top:.75rem;min-height:1.25rem}
+.link{margin-top:1rem;text-align:center;color:#6b7280}
+.link a{color:#7c3aed;font-weight:600;text-decoration:none}
+.dash{background:#fff;padding:3rem;border-radius:1.25rem;box-shadow:0 20px 60px rgba(0,0,0,.25);text-align:center}
+.dash h1{margin-bottom:1rem}
+.dash button{width:auto;padding:.6rem 1.5rem;margin-top:1.5rem}
