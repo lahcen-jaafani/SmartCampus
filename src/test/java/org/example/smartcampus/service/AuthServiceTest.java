@@ -41,7 +41,7 @@ class AuthServiceTest {
     @Test
     void login_returnsToken_whenValid() {
         User u = User.builder().email("test@campus.ma").password("encoded").role("STUDENT").build();
-        AuthDtos.LoginRequest req = new AuthDtos.LoginRequest("test@campus.ma", "pass123");
+        AuthDtos.LoginRequest req = new AuthDtos.LoginRequest("test@campus.ma", "pass12343");
         when(users.findByEmail("test@campus.ma")).thenReturn(Optional.of(u));
         when(encoder.matches("pass123", "encoded")).thenReturn(true);
         when(jwt.generateToken("test@campus.ma")).thenReturn("jwt-token");
