@@ -1,32 +1,14 @@
 services:
-  db:
-    image: postgres:16
-    container_name: smartcampus-db
-    environment:
-      POSTGRES_DB: smartcampus
-      POSTGRES_USER: smartcampus
-      POSTGRES_PASSWORD: smartcampus
-    volumes:
-      - pgdata:/var/lib/postgresql/data
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U smartcampus -d smartcampus"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-
   api:
     build: .
     container_name: smartcampus-api
-    depends_on:
-      db:
-        condition: service_healthy
     ports:
       - "8088:8088"
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/smartcampus
-      SPRING_DATASOURCE_USERNAME: smartcampus
-      SPRING_DATASOURCE_PASSWORD: smartcampus
       SERVER_PORT: 8088
+      SPRING_DATASOURCE_URL: jdbc:h2:mem:smartcampus
+      SPRING_DATASOURCE_DRIVER_CLASS_NAME: org.h2.Driver
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
     volumes:
       - appdata:/app/data
     healthcheck:
@@ -36,5 +18,4 @@ services:
       retries: 5
 
 volumes:
-  pgdata:
   appdata:
