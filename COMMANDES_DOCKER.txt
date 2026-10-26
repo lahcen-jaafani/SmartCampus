@@ -1,0 +1,19 @@
+1) Build JAR (Jenkins produit target/*.jar)
+   mvn clean package -DskipTests
+
+2) Build image
+   docker build -t smartcampus:1.0 .
+
+3) Run container seul (port 8088)
+   docker run -d --name smartcampus -p 8088:8088 -v smartcampus_data:/app/data smartcampus:1.0
+
+4) Docker Compose
+   docker compose up -d --build
+   docker compose logs -f api
+   docker compose ps
+   docker compose down
+
+5) Diagnostique
+   docker logs -f smartcampus
+   docker exec -it smartcampus sh
+   curl http://localhost:8088/actuator/health
